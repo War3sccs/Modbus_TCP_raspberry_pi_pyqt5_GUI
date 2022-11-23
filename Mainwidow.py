@@ -1627,7 +1627,7 @@ class Ui_MainWindow(QMainWindow):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Arial\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">3#模拟信号</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">变频器</p></body></html>"))
         self.pushButton_8.setText(_translate("MainWindow", "设置"))
         self.pushButton_22.setText(_translate("MainWindow", "自变"))
         self.label_38.setText(_translate("MainWindow", "mA"))
@@ -1635,7 +1635,7 @@ class Ui_MainWindow(QMainWindow):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Arial\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4#模拟信号</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">电动阀</p></body></html>"))
         self.pushButton_9.setText(_translate("MainWindow", "设置"))
         self.pushButton_26.setText(_translate("MainWindow", "自变"))
         self.textEdit_17.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

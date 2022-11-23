@@ -291,7 +291,7 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
     if (get_meter_data == []) or (get_meter_data[0] == -1):
         print('Can not connect meter.')
         flowmeter.Connect_status_meter = 0  # 连接modbus错误
-        tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.1")
+        tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
     else:
         # 刷新仪表数据结构中的数据
         for item in range(42):
@@ -367,11 +367,11 @@ def refresh_parameter_all():
     date_time = date_time_now_text(datetime.datetime.now())
     MainWindow.label_28.setText(date_time)
     # frame闪烁
-    global frame_flash
-    if frame_flash == 0:
-        frame_flash = frame_flash + 1
-    else:
-        frame_flash = frame_flash - 1
+    # global frame_flash
+    # if frame_flash == 0:
+    #     frame_flash = frame_flash + 1
+    # else:
+    #     frame_flash = frame_flash - 1
 
     for i in range(28799):
         flow_meter_1.display_data_ch1['x'][i] = flow_meter_1.display_data_ch1['x'][i + 1]
@@ -494,16 +494,6 @@ def refresh_parameter_all():
     flow_meter_1.display_valve_position['y'][28799] = pid_valve_position
     flow_meter_1.display_pid_set_point['y'][28799] = refresh_return_data['meter_1']['pid_set_point']
 
-    # 更新 曲线
-    Plot_meter_data.update_figure()
-    Plot_meter_data_2.update_figure()
-    Plot_meter_data_3.update_figure()
-    Plot_meter_data_4.update_figure()
-    Plot_meter_data_5.update_figure()
-    Plot_meter_data_6.update_figure()
-    Plot_pid_flow.update_figure()
-    Plot_valve_position.update_figure()
-
 
 #  定时连接RS-485函数
 def refresh_rs485_connect():
@@ -534,12 +524,31 @@ def refresh_rs485_connect():
 #  定时更新界面
 MainWindow.timer = QTimer()  # 初始化定时器
 MainWindow.timer.timeout.connect(refresh_parameter_all)  # 定时操作
-MainWindow.timer.start(1000)  # 每秒刷新1次
+MainWindow.timer.start(1000)  # 每2秒刷新1次
 
 #  定时连接RS-485
-rs485_connect_refresh = threading.Timer(0.5, refresh_rs485_connect)  # 初始化threading定时器
+rs485_connect_refresh = threading.Timer(1.0, refresh_rs485_connect)  # 初始化threading定时器
 rs485_connect_refresh.start()  # 启动threading定时器
 
+# 定时更新曲线显示
+def figure_refresh():
+    # 更新 曲线
+    Plot_meter_data.update_figure()
+    Plot_meter_data_2.update_figure()
+    Plot_meter_data_3.update_figure()
+    Plot_meter_data_4.update_figure()
+    Plot_meter_data_5.update_figure()
+    Plot_meter_data_6.update_figure()
+    Plot_pid_flow.update_figure()
+    Plot_valve_position.update_figure()
+
+    update_figure = threading.Timer(1.0, figure_refresh)  # 初始化threading定时器
+    # 主进程存活时继续运行，主进程停止时停止
+    if threading.main_thread().is_alive():
+        update_figure.start()  # 启动threading定时器
+
+update_figure = threading.Timer(1.0, figure_refresh)
+update_figure.start()  # 启动threading定时器
 
 # TODO:3.1.2 运行曲线界面-类
 class PlotCanvas(FigureCanvas):
