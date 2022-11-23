@@ -32,13 +32,35 @@ import data_save_function  # 导入数据导出处理函数
 import data_drop  # 导入清理数据窗体
 import data_drop_function  # 导入清理数据处理函数
 import threading  # 导入多线程模块
+from logging.handlers import RotatingFileHandler  # 导入日志模块
 
 if hasattr(sys, 'frozen'):
     os.environ['PATH'] = sys._MEIPASS + ";" + os.environ['PATH']  # 导入Qt5Core库
 sys.setrecursionlimit(4000)  # set the maximum depth as 4000  修改最大归递次数
 
-# TODO:1.1 全局变量
 # TODO:1.全局变量/公用函数/初始化
+# TODO:1.1 开启logging
+logger_paddle = logging.getLogger('logging_paddle')
+
+# TODO:1.1.1日志格式
+log_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+# TODO:1.1.2 日志纪录的目的地
+# 定义日志信息发送的目的地，可以是控制台，也可以是文件，也可以多个
+logger_handler = logging.StreamHandler()  # log在控制台显示
+logger_handler.setFormatter(log_format)
+logger_paddle.addHandler(logger_handler)
+
+file_handler = RotatingFileHandler('operationg_log.txt', maxBytes=10000000, backupCount=3)  # log写入文件
+file_handler.setFormatter(log_format)
+logger_paddle.addHandler(file_handler)
+
+# TODO:1.1.3 记录的等级
+# logger_paddle.setLevel(logging.DEBUG)
+logger_paddle.setLevel(logging.INFO)
+# logger_paddle.setLevel(logging.WARNING)
+
+# TODO:1.2 全局变量
 Time_count = 0  # 定时器始值
 frame_flash = 0  # frame闪烁
 display_length = {'length': '5min',
@@ -105,16 +127,16 @@ refresh_return_data = {'meter_1': {'flow_1': 0,  # 通道1流量
 def translate_meter_data_to_save_parlance(meter_data, meter_data_column):
     meter_setting = pd.DataFrame(meter_data, index=meter_data_column)
     meter_setting = meter_setting.T
-    print(meter_setting)
+    logger_paddle.debug(meter_setting)
     return meter_setting
 
 
 # 保存运行数据
 def save_data(log_data):
     dir_now = os.getcwd()  # 获取当前工作目录
-    print(dir_now)
+    logger_paddle.debug('保存目录' + dir_now)
     export_file_name = dir_now + '\\' + 'meter_run_data.csv'
-    print(export_file_name)
+    logger_paddle.info('保存文件' + export_file_name)
     log_data.to_csv(export_file_name, index=False, header=False, mode='a')
 
 
@@ -127,7 +149,7 @@ plt.rcParams['figure.facecolor'] = '#F0F0F0'  # 修改曲线背景颜色
 
 # TODO:1.3.2 建立Modbus_TCP连接
 tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
-print(tcp_conncetion)
+logger_paddle.info(tcp_conncetion)
 
 
 # TODO:2.仪表类
@@ -198,12 +220,6 @@ class FlowMeter:
 
 # TODO:2.5 定义仪表
 flow_meter_1 = FlowMeter()
-flow_meter_1.Modbus_parameter['PORT'] = 'COM5'
-flow_meter_1.Modbus_parameter['baudrate'] = 9600
-flow_meter_1.Modbus_parameter['bytesize'] = 8
-flow_meter_1.Modbus_parameter['parity'] = 'N'
-flow_meter_1.Modbus_parameter['stopbits'] = 1
-flow_meter_1.Modbus_parameter['address'] = 2
 
 # TODO:3.GUI界面运行
 app = QApplication(sys.argv)
@@ -283,26 +299,32 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
     flowmeter.Meter_data_2_plus[0] = datetime.datetime.now()
 
     # 读取仪表信息
-    get_meter_data = Modbus_TCP.read_modbus_tcp(modbus_tcp_connection,
-                                                0,  # 起始寄存器
-                                                42,  # 读寄存器的数量
-                                                )
-    print(get_meter_data)
+    try:
+        get_meter_data = Modbus_TCP.read_modbus_tcp(modbus_tcp_connection,
+                                                    0,  # 起始寄存器
+                                                    42,  # 读寄存器的数量
+                                                    )
+    except Exception as err:
+        logger_paddle.error('Can not connect meter.')
+    finally:
+        logger_paddle.info('register_reed:' + str(get_meter_data))
+
     if (get_meter_data == []) or (get_meter_data[0] == -1):
-        print('Can not connect meter.')
+        logger_paddle.error('Can not connect meter.')
         flowmeter.Connect_status_meter = 0  # 连接modbus错误
         tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
     else:
         # 刷新仪表数据结构中的数据
         for item in range(42):
             flowmeter.Meter_data_2_plus[item + 1] = get_meter_data[item]
-        print(flowmeter.Meter_data_2_plus)
+        logger_paddle.info(flowmeter.Meter_data_2_plus)
         flowmeter.Connect_status_meter = 1  # 连接modbus错误
 
+
         # 保存运行记录
-        save_run_data = translate_meter_data_to_save_parlance(flowmeter.Meter_data_2_plus,
-                                                              flowmeter.Meter_data_column_2_plus)
-        save_data(save_run_data)
+        # save_run_data = translate_meter_data_to_save_parlance(flowmeter.Meter_data_2_plus,
+        #                                                       flowmeter.Meter_data_column_2_plus)
+        # save_data(save_run_data)
 
     # 刷新脉冲数
     if flowmeter.Connect_status_meter == 0:
@@ -500,7 +522,7 @@ def refresh_rs485_connect():
     global tcp_conncetion
     # 读plc状态
     refresh_return_data['meter_1'] = refresh_parameter_for_1_meter(flow_meter_1, tcp_conncetion)
-    print(refresh_return_data)
+    logger_paddle.info(refresh_return_data)
 
     # 写plc数据
     if write_to_plc['status'] == 1:
@@ -509,10 +531,11 @@ def refresh_rs485_connect():
                                                  write_to_plc['data'])
         if (write_data == []) or (write_data == -1):
             # messagebox_in_Chinese.information_messagebox('修改控制参数', '修改控制参数失败')
-            print('修改控制参数失败')
+            logger_paddle.error('修改控制参数失败')
         else:
             # messagebox_in_Chinese.information_messagebox('修改控制参数', '成功修改控制参数')
             print('成功修改控制参数')
+            logger_paddle.info('成功修改控制参数')
         write_to_plc['status'] = 0
 
     rs485_connect_refresh = threading.Timer(0.5, refresh_rs485_connect)  # 初始化threading定时器
