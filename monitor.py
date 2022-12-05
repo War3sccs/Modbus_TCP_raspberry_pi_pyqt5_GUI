@@ -76,48 +76,81 @@ write_to_plc = {'status': 0,  # 状态
                 }
 
 #  定义读取仪表后返回的显示数据
-refresh_return_data = {'meter_1': {'flow_1': 0,  # 通道1流量
+refresh_return_data = {'meter_1': {'DateTime': 0,  # 日期时间
+                                   'plan': 1,  # 投加方案
+                                   'flow_1': 0,  # 通道1流量
+                                   'flow_1_decimal': 0,  # 通道1流量
                                    'flow_2': 0,  # 通道2流量
+                                   'flow_2_decimal': 0,  # 通道1流量
                                    'flow_3': 0,  # 通道3流量
+                                   'flow_3_decimal': 0,  # 通道1流量
                                    'flow_4': 0,  # 通道4流量
+                                   'flow_4_decimal': 0,  # 通道1流量
                                    'flow_5': 0,  # 通道5流量
+                                   'flow_5_decimal': 0,  # 通道1流量
                                    'flow_6': 0,  # 通道6流量
-                                   'pulse_1': 0,  # 通道1脉冲
-                                   'pulse_2': 0,  # 通道2脉冲
-                                   'pulse_3': 0,  # 通道3脉冲
-                                   'pulse_4': 0,  # 通道4脉冲
-                                   'pulse_5': 0,  # 通道5脉冲
-                                   'pulse_6': 0,  # 通道6脉冲
-                                   'SPM1': 0,
-                                   'SPM2': 0,
-                                   'SPM3': 0,
-                                   'SPM4': 0,
-                                   'SPM_max': 0,  # SPM上限
-                                   '4-20mA_1': 0,
-                                   '4-20mA_2': 0,
-                                   '4-20mA_3': 0,
-                                   '4-20mA_4': 0,
-                                   'flow_cylinder_100': 0,  # 标定流量 100ml标定柱
-                                   'flow_cylinder_2000': 0,  # 标定流量 2000ml标定柱
-                                   'meter_connection': 0,  # 仪表连接状态
-                                   'pump_1_status': 0,  # 泵1状态
-                                   'pump_2_status': 0,  # 泵2状态
-                                   'pump_3_status': 0,  # 泵3状态
-                                   'pump_4_status': 0,  # 泵4状态
-                                   'SPM-auto_1': 0,  # SPM自变
-                                   'SPM-auto_2': 0,  # SPM自变
-                                   'SPM-auto_3': 0,  # SPM自变
-                                   'SPM-auto_4': 0,  # SPM自变
-                                   '4-20mA_auto_1': 0,  # 4-20mA自变
-                                   '4-20mA_auto_2': 0,  # 4-20mA自变
-                                   '4-20mA_auto_3': 0,  # 4-20mA自变
-                                   '4-20mA_auto_4': 0,  # 4-20mA自变
-                                   'pid_control': 0,  # 0非PID控制，1PID控制
-                                   'pid_control_channel': 0,  # PID控制通道
-                                   'pid_set_point': 0,  # PID设定流量
-                                   'calibration_pot_select': 0,  # 选择的标定柱
-                                   'sensor_k_factor': 0,  # 探头的K值
-                                   'pid_flow': 0,  # PID反馈流量
+                                   'flow_6_decimal': 0,  # 通道1流量
+                                   'flow_7': 0,  # 通道7流量
+                                   'flow_7_decimal': 0,  # 通道1流量
+                                   'flow_8': 0,  # 通道8流量
+                                   'flow_8_decimal': 0,  # 通道1流量
+                                   'flow_9': 0,  # 通道9流量
+                                   'flow_9_decimal': 0,  # 通道1流量
+                                   'flow_10': 0,  # 通道10流量
+                                   'flow_10_decimal': 0,  # 通道1流量
+                                   'flow_11': 0,  # 通道11流量
+                                   'flow_11_decimal': 0,  # 通道1流量
+                                   'flow_12': 0,  # 通道12流量
+                                   'flow_12_decimal': 0,  # 通道1流量
+                                   'flow_13': 0,  # 通道13流量
+                                   'flow_13_decimal': 0,  # 通道1流量
+                                   'flow_14': 0,  # 通道14流量
+                                   'flow_14_decimal': 0,  # 通道1流量
+                                   'high_flow_1': 0,  # 通道1流量高报警
+                                   'high_flow_2': 0,  # 通道2流量高报警
+                                   'high_flow_3': 0,  # 通道3流量高报警
+                                   'high_flow_4': 0,  # 通道4流量高报警
+                                   'high_flow_5': 0,  # 通道5流量高报警
+                                   'high_flow_6': 0,  # 通道6流量高报警
+                                   'high_flow_7': 0,  # 通道7流量高报警
+                                   'high_flow_8': 0,  # 通道8流量高报警
+                                   'high_flow_9': 0,  # 通道9流量高报警
+                                   'high_flow_10': 0,  # 通道10流量高报警
+                                   'high_flow_11': 0,  # 通道11流量高报警
+                                   'high_flow_12': 0,  # 通道12流量高报警
+                                   'high_flow_13': 0,  # 通道13流量高报警
+                                   'high_flow_14': 0,  # 通道14流量高报警
+                                   'low_flow_1': 0,  # 通道1流量低报警
+                                   'low_flow_2': 0,  # 通道2流量低报警
+                                   'low_flow_3': 0,  # 通道3流量低报警
+                                   'low_flow_4': 0,  # 通道4流量低报警
+                                   'low_flow_5': 0,  # 通道5流量低报警
+                                   'low_flow_6': 0,  # 通道6流量低报警
+                                   'low_flow_7': 0,  # 通道7流量低报警
+                                   'low_flow_8': 0,  # 通道8流量低报警
+                                   'low_flow_9': 0,  # 通道9流量低报警
+                                   'low_flow_10': 0,  # 通道10流量低报警
+                                   'low_flow_11': 0,  # 通道11流量低报警
+                                   'low_flow_12': 0,  # 通道12流量低报警
+                                   'low_flow_13': 0,  # 通道13流量低报警
+                                   'low_flow_14': 0,  # 通道14流量低报警
+                                   'conductivity': 0,  # 电导率
+                                   'conductivity_high': 0,  # 电导率
+                                   'conductivity_low': 0,  # 电导率
+                                   'total_1': 0,  # 累积1
+                                   'total_2': 0,  # 累积1
+                                   'total_3': 0,  # 累积1
+                                   'total_4': 0,  # 累积1
+                                   'total_5': 0,  # 累积1
+                                   'total_6': 0,  # 累积1
+                                   'total_7': 0,  # 累积1
+                                   'total_8': 0,  # 累积1
+                                   'total_9': 0,  # 累积1
+                                   'total_10': 0,  # 累积1
+                                   'total_11': 0,  # 累积1
+                                   'total_12': 0,  # 累积1
+                                   'total_13': 0,  # 累积1
+                                   'total_14': 0,  # 累积1
                                    },
                        }
 
@@ -151,6 +184,13 @@ plt.rcParams['figure.facecolor'] = '#F0F0F0'  # 修改曲线背景颜色
 tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
 logger_paddle.info(tcp_conncetion)
 
+# TODO:1.3.3 单位转换
+# ml/min转换为L/h
+def ml_min_to_l_h(flow_in):
+    flow_out = flow_in / 1000 * 60
+    logger_paddle.debug(flow_out)
+    return flow_out
+
 
 # TODO:2.仪表类
 class FlowMeter:
@@ -168,36 +208,70 @@ class FlowMeter:
 
         # TODO:2.2数据结构
         # 读
-        # self.Meter_data_column_2_plus = list(np.arange(34) + 40001)
-        self.Meter_data_column_2_plus = list(np.arange(42) + 40001)
-        # self.Meter_data_2_plus = list(np.zeros(36).astype(int))
-        self.Meter_data_2_plus = list(np.zeros(44).astype(int))
+        self.Meter_data_column_2_plus = list(np.arange(88) + 40001)
+        self.Meter_data_2_plus = list(np.zeros(89).astype(int))
         # 写
-        # self.Meter_data_2_plus_write_index = list(np.arange(36) + 40001)
-        self.Meter_data_2_plus_write_index = list(np.arange(44) + 40001)
-        # self.Meter_data_2_plus_write_value = list(np.arange(36))
-        self.Meter_data_2_plus_write_value = list(np.arange(44))
+        self.Meter_data_2_plus_write_index = list(np.arange(89) + 40001)
+        self.Meter_data_2_plus_write_value = list(np.arange(89))
         self.Meter_data_2_plus_write = pd.Series(self.Meter_data_2_plus_write_value,
                                                  index=self.Meter_data_2_plus_write_index)
         # 显示曲线初始化
         self.display_data_ch1 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
         self.display_data_ch2 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
         self.display_data_ch3 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
         self.display_data_ch4 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
         self.display_data_ch5 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
         self.display_data_ch6 = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
-        self.display_pid_flow = {'x': list(np.zeros(28800)),
-                                 'y': list(np.zeros(28800))}
-        self.display_valve_position = {'x': list(np.zeros(28800)),
-                                       'y': list(np.zeros(28800))}
-        self.display_pid_set_point = {'x': list(np.zeros(28800)),
-                                      'y': list(np.zeros(28800))}
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
+        self.display_data_ch7 = {'x': list(np.zeros(28800)),
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
+        self.display_data_ch8 = {'x': list(np.zeros(28800)),
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
+        self.display_data_ch9 = {'x': list(np.zeros(28800)),
+                                 'y': list(np.zeros(28800)),
+                                 'h': list(np.zeros(28800)),
+                                 'l': list(np.zeros(28800))}
+        self.display_data_ch10 = {'x': list(np.zeros(28800)),
+                                  'y': list(np.zeros(28800)),
+                                  'h': list(np.zeros(28800)),
+                                  'l': list(np.zeros(28800))}
+        self.display_data_ch11 = {'x': list(np.zeros(28800)),
+                                  'y': list(np.zeros(28800)),
+                                  'h': list(np.zeros(28800)),
+                                  'l': list(np.zeros(28800))}
+        self.display_data_ch12 = {'x': list(np.zeros(28800)),
+                                  'y': list(np.zeros(28800)),
+                                  'h': list(np.zeros(28800)),
+                                  'l': list(np.zeros(28800))}
+        self.display_data_ch13 = {'x': list(np.zeros(28800)),
+                                  'y': list(np.zeros(28800)),
+                                  'h': list(np.zeros(28800)),
+                                  'l': list(np.zeros(28800))}
+        self.display_data_ch14 = {'x': list(np.zeros(28800)),
+                                  'y': list(np.zeros(28800)),
+                                  'h': list(np.zeros(28800)),
+                                  'l': list(np.zeros(28800))}
         # TODO:2.3初始化函数
         for i in range(len(self.Meter_data_column_2_plus)):
             self.Meter_data_column_2_plus[i] = str(self.Meter_data_column_2_plus[i])
@@ -206,17 +280,6 @@ class FlowMeter:
         self.Meter_data_2_plus[0] = datetime.datetime.now()  # 获取当前时间
         for i in range(len(self.Meter_data_2_plus_write_index)):
             self.Meter_data_2_plus_write_index[i] = str(self.Meter_data_2_plus_write_index[i])
-        # print(type(self.Connect))
-
-    # TODO:2.4 modbus参数复位
-    def modbus_parameter_reset(self):
-        self.Modbus_parameter['PORT'] = "无串口!"  # 串口号
-        self.Modbus_parameter['baudrate'] = 9600  # 波特率
-        self.Modbus_parameter['bytesize'] = 8  # 数据位
-        self.Modbus_parameter['parity'] = 'N'  # 校验位
-        self.Modbus_parameter['stopbits'] = 1  # 停止位
-        self.Modbus_parameter['address'] = 1  # 仪表从站站号
-
 
 # TODO:2.5 定义仪表
 flow_meter_1 = FlowMeter()
@@ -252,48 +315,82 @@ def time_now_text(date_time_now):
 def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
     global tcp_conncetion
     # 定义返回数据结构
-    return_data = {'flow_1': 0,  # 通道1流量
+    return_data = {'DateTime': 0,  # 日期时间
+                   'plan': 1,  # 投加方案
+                   'flow_1': 0,  # 通道1流量
+                   'flow_1_decimal': 0,  # 通道1流量
                    'flow_2': 0,  # 通道2流量
+                   'flow_2_decimal': 0,  # 通道1流量
                    'flow_3': 0,  # 通道3流量
+                   'flow_3_decimal': 0,  # 通道1流量
                    'flow_4': 0,  # 通道4流量
+                   'flow_4_decimal': 0,  # 通道1流量
                    'flow_5': 0,  # 通道5流量
+                   'flow_5_decimal': 0,  # 通道1流量
                    'flow_6': 0,  # 通道6流量
-                   'pulse_1': 0,  # 通道1脉冲
-                   'pulse_2': 0,  # 通道2脉冲
-                   'pulse_3': 0,  # 通道3脉冲
-                   'pulse_4': 0,  # 通道4脉冲
-                   'pulse_5': 0,  # 通道5脉冲
-                   'pulse_6': 0,  # 通道6脉冲
-                   'SPM1': 0,
-                   'SPM2': 0,
-                   'SPM3': 0,
-                   'SPM4': 0,
-                   'SPM_max': 0,  # SPM上限
-                   '4-20mA_1': 0,
-                   '4-20mA_2': 0,
-                   '4-20mA_3': 0,
-                   '4-20mA_4': 0,
-                   'flow_cylinder_100': 0,  # 标定流量 100ml标定柱
-                   'flow_cylinder_2000': 0,  # 标定流量 2000ml标定柱
-                   'meter_connection': 0,  # 仪表连接状态
-                   'pump_1_status': 0,  # 泵1状态
-                   'pump_2_status': 0,  # 泵2状态
-                   'pump_3_status': 0,  # 泵3状态
-                   'pump_4_status': 0,  # 泵4状态
-                   'SPM-auto_1': 0,  # SPM自变
-                   'SPM-auto_2': 0,  # SPM自变
-                   'SPM-auto_3': 0,  # SPM自变
-                   'SPM-auto_4': 0,  # SPM自变
-                   '4-20mA_auto_1': 0,  # 4-20mA自变
-                   '4-20mA_auto_2': 0,  # 4-20mA自变
-                   '4-20mA_auto_3': 0,  # 4-20mA自变
-                   '4-20mA_auto_4': 0,  # 4-20mA自变
-                   'pid_control': 0,  # 0非PID控制，1PID控制
-                   'pid_control_channel': 0,  # PID控制通道
-                   'pid_set_point': 0,  # PID设定流量
-                   'calibration_pot_select': 0,  # 选择的标定柱
-                   'sensor_k_factor': 0,  # 探头的K值
-                   'pid_flow': 0,  # PID反馈流量
+                   'flow_6_decimal': 0,  # 通道1流量
+                   'flow_7': 0,  # 通道7流量
+                   'flow_7_decimal': 0,  # 通道1流量
+                   'flow_8': 0,  # 通道8流量
+                   'flow_8_decimal': 0,  # 通道1流量
+                   'flow_9': 0,  # 通道9流量
+                   'flow_9_decimal': 0,  # 通道1流量
+                   'flow_10': 0,  # 通道10流量
+                   'flow_10_decimal': 0,  # 通道1流量
+                   'flow_11': 0,  # 通道11流量
+                   'flow_11_decimal': 0,  # 通道1流量
+                   'flow_12': 0,  # 通道12流量
+                   'flow_12_decimal': 0,  # 通道1流量
+                   'flow_13': 0,  # 通道13流量
+                   'flow_13_decimal': 0,  # 通道1流量
+                   'flow_14': 0,  # 通道14流量
+                   'flow_14_decimal': 0,  # 通道1流量
+                   'high_flow_1': 0,  # 通道1流量高报警
+                   'high_flow_2': 0,  # 通道2流量高报警
+                   'high_flow_3': 0,  # 通道3流量高报警
+                   'high_flow_4': 0,  # 通道4流量高报警
+                   'high_flow_5': 0,  # 通道5流量高报警
+                   'high_flow_6': 0,  # 通道6流量高报警
+                   'high_flow_7': 0,  # 通道7流量高报警
+                   'high_flow_8': 0,  # 通道8流量高报警
+                   'high_flow_9': 0,  # 通道9流量高报警
+                   'high_flow_10': 0,  # 通道10流量高报警
+                   'high_flow_11': 0,  # 通道11流量高报警
+                   'high_flow_12': 0,  # 通道12流量高报警
+                   'high_flow_13': 0,  # 通道13流量高报警
+                   'high_flow_14': 0,  # 通道14流量高报警
+                   'low_flow_1': 0,  # 通道1流量低报警
+                   'low_flow_2': 0,  # 通道2流量低报警
+                   'low_flow_3': 0,  # 通道3流量低报警
+                   'low_flow_4': 0,  # 通道4流量低报警
+                   'low_flow_5': 0,  # 通道5流量低报警
+                   'low_flow_6': 0,  # 通道6流量低报警
+                   'low_flow_7': 0,  # 通道7流量低报警
+                   'low_flow_8': 0,  # 通道8流量低报警
+                   'low_flow_9': 0,  # 通道9流量低报警
+                   'low_flow_10': 0,  # 通道10流量低报警
+                   'low_flow_11': 0,  # 通道11流量低报警
+                   'low_flow_12': 0,  # 通道12流量低报警
+                   'low_flow_13': 0,  # 通道13流量低报警
+                   'low_flow_14': 0,  # 通道14流量低报警
+                   'conductivity': 0,  # 电导率
+                   'conductivity_high': 0,  # 电导率
+                   'conductivity_low': 0,  # 电导率
+                   'display_length': 0,  # 展示长度
+                   'total_1': 0,  # 累积1
+                   'total_2': 0,  # 累积1
+                   'total_3': 0,  # 累积1
+                   'total_4': 0,  # 累积1
+                   'total_5': 0,  # 累积1
+                   'total_6': 0,  # 累积1
+                   'total_7': 0,  # 累积1
+                   'total_8': 0,  # 累积1
+                   'total_9': 0,  # 累积1
+                   'total_10': 0,  # 累积1
+                   'total_11': 0,  # 累积1
+                   'total_12': 0,  # 累积1
+                   'total_13': 0,  # 累积1
+                   'total_14': 0,  # 累积1
                    }
     # 刷新仪表数据结构中的数据
     flowmeter.Meter_data_2_plus[0] = datetime.datetime.now()
@@ -302,7 +399,7 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
     try:
         get_meter_data = Modbus_TCP.read_modbus_tcp(modbus_tcp_connection,
                                                     0,  # 起始寄存器
-                                                    42,  # 读寄存器的数量
+                                                    88,  # 读寄存器的数量
                                                     )
     except Exception as err:
         logger_paddle.error('Can not connect meter.')
@@ -315,7 +412,7 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
         tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
     else:
         # 刷新仪表数据结构中的数据
-        for item in range(42):
+        for item in range(88):
             flowmeter.Meter_data_2_plus[item + 1] = get_meter_data[item]
         logger_paddle.info(flowmeter.Meter_data_2_plus)
         flowmeter.Connect_status_meter = 1  # 连接modbus错误
@@ -328,58 +425,142 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
 
     # 刷新脉冲数
     if flowmeter.Connect_status_meter == 0:
-        return_data['pulse_1'] = -1
-        return_data['pulse_2'] = -1
-        return_data['pulse_3'] = -1
-        return_data['pulse_4'] = -1
-        return_data['pulse_5'] = -1
-        return_data['pulse_6'] = -1
-        return_data['SPM1'] = -1
-        return_data['SPM2'] = -1
-        return_data['SPM3'] = -1
-        return_data['SPM4'] = -1
-        return_data['4-20mA_1'] = -1
-        return_data['4-20mA_2'] = -1
-        return_data['4-20mA_3'] = -1
-        return_data['4-20mA_4'] = -1
+        return_data['flow_1'] = -1
+        return_data['flow_2'] = -1
+        return_data['flow_3'] = -1
+        return_data['flow_4'] = -1
+        return_data['flow_5'] = -1
+        return_data['flow_6'] = -1
+        return_data['flow_7'] = -1
+        return_data['flow_8'] = -1
+        return_data['flow_9'] = -1
+        return_data['flow_10'] = -1
+        return_data['flow_11'] = -1
+        return_data['flow_12'] = -1
+        return_data['flow_13'] = -1
+        return_data['flow_14'] = -1
+        return_data['high_flow_1'] = -1
+        return_data['high_flow_2'] = -1
+        return_data['high_flow_3'] = -1
+        return_data['high_flow_4'] = -1
+        return_data['high_flow_5'] = -1
+        return_data['high_flow_6'] = -1
+        return_data['high_flow_7'] = -1
+        return_data['high_flow_8'] = -1
+        return_data['high_flow_9'] = -1
+        return_data['high_flow_10'] = -1
+        return_data['high_flow_11'] = -1
+        return_data['high_flow_12'] = -1
+        return_data['high_flow_13'] = -1
+        return_data['high_flow_14'] = -1
+        return_data['low_flow_1'] = -1
+        return_data['low_flow_2'] = -1
+        return_data['low_flow_3'] = -1
+        return_data['low_flow_4'] = -1
+        return_data['low_flow_5'] = -1
+        return_data['low_flow_6'] = -1
+        return_data['low_flow_7'] = -1
+        return_data['low_flow_8'] = -1
+        return_data['low_flow_9'] = -1
+        return_data['low_flow_10'] = -1
+        return_data['low_flow_11'] = -1
+        return_data['low_flow_12'] = -1
+        return_data['low_flow_13'] = -1
+        return_data['low_flow_14'] = -1
+        return_data['conductivity'] = -1
+        return_data['conductivity_high'] = -1
+        return_data['conductivity_low'] = -1
+        return_data['display_length'] = -1
+        return_data['total_1'] = -1
+        return_data['total_2'] = -1
+        return_data['total_3'] = -1
+        return_data['total_4'] = -1
+        return_data['total_5'] = -1
+        return_data['total_6'] = -1
+        return_data['total_7'] = -1
+        return_data['total_8'] = -1
+        return_data['total_9'] = -1
+        return_data['total_10'] = -1
+        return_data['total_11'] = -1
+        return_data['total_12'] = -1
+        return_data['total_13'] = -1
+        return_data['total_14'] = -1
     elif flowmeter.Connect_status_meter == 1:
-        return_data['pulse_1'] = flowmeter.Meter_data_2_plus[1]
-        return_data['pulse_2'] = flowmeter.Meter_data_2_plus[2]
-        return_data['pulse_3'] = flowmeter.Meter_data_2_plus[3]
-        return_data['pulse_4'] = flowmeter.Meter_data_2_plus[4]
-        return_data['pulse_5'] = flowmeter.Meter_data_2_plus[5]
-        return_data['pulse_6'] = flowmeter.Meter_data_2_plus[6]
-        return_data['SPM1'] = flowmeter.Meter_data_2_plus[7]
-        return_data['SPM2'] = flowmeter.Meter_data_2_plus[8]
-        return_data['SPM3'] = flowmeter.Meter_data_2_plus[9]
-        return_data['SPM4'] = flowmeter.Meter_data_2_plus[10]
-        return_data['4-20mA_1'] = flowmeter.Meter_data_2_plus[12]
-        return_data['4-20mA_2'] = flowmeter.Meter_data_2_plus[13]
-        return_data['4-20mA_3'] = flowmeter.Meter_data_2_plus[14]
-        return_data['4-20mA_4'] = flowmeter.Meter_data_2_plus[15]
-        return_data['flow_cylinder_100'] = float(flowmeter.Meter_data_2_plus[16]) + \
-                                           float(flowmeter.Meter_data_2_plus[17]) / 10000
-        return_data['flow_cylinder_2000'] = float(flowmeter.Meter_data_2_plus[18]) + \
-                                            float(flowmeter.Meter_data_2_plus[19]) / 10000
-        return_data['pump_1_status'] = flowmeter.Meter_data_2_plus[24]
-        return_data['pump_2_status'] = flowmeter.Meter_data_2_plus[25]
-        return_data['pump_3_status'] = flowmeter.Meter_data_2_plus[26]
-        return_data['pump_4_status'] = flowmeter.Meter_data_2_plus[27]
-        return_data['SPM-auto_1'] = flowmeter.Meter_data_2_plus[28]
-        return_data['SPM-auto_2'] = flowmeter.Meter_data_2_plus[29]
-        return_data['SPM-auto_3'] = flowmeter.Meter_data_2_plus[30]
-        return_data['SPM-auto_4'] = flowmeter.Meter_data_2_plus[31]
-        return_data['4-20mA_auto_1'] = flowmeter.Meter_data_2_plus[32]
-        return_data['4-20mA_auto_2'] = flowmeter.Meter_data_2_plus[33]
-        return_data['4-20mA_auto_3'] = flowmeter.Meter_data_2_plus[34]
-        return_data['4-20mA_auto_4'] = flowmeter.Meter_data_2_plus[35]
-        return_data['pid_control'] = flowmeter.Meter_data_2_plus[36]
-        return_data['pid_control_channel'] = flowmeter.Meter_data_2_plus[37]
-        return_data['pid_set_point'] = flowmeter.Meter_data_2_plus[38]
-        return_data['calibration_pot_select'] = flowmeter.Meter_data_2_plus[39]
-        return_data['sensor_k_factor'] = flowmeter.Meter_data_2_plus[40]
-        return_data['pid_flow'] = float(flow_meter_1.Meter_data_2_plus[41]) + \
-                                  float(flowmeter.Meter_data_2_plus[42]) / 10000
+        return_data['plan'] = flowmeter.Meter_data_2_plus[1]
+        return_data['flow_1'] = flowmeter.Meter_data_2_plus[2]
+        return_data['flow_1_decimal'] = flowmeter.Meter_data_2_plus[3]
+        return_data['flow_2'] = flowmeter.Meter_data_2_plus[4]
+        return_data['flow_2_decimal'] = flowmeter.Meter_data_2_plus[5]
+        return_data['flow_3'] = flowmeter.Meter_data_2_plus[6]
+        return_data['flow_3_decimal'] = flowmeter.Meter_data_2_plus[7]
+        return_data['flow_4'] = flowmeter.Meter_data_2_plus[8]
+        return_data['flow_4_decimal'] = flowmeter.Meter_data_2_plus[9]
+        return_data['flow_5'] = flowmeter.Meter_data_2_plus[10]
+        return_data['flow_5_decimal'] = flowmeter.Meter_data_2_plus[11]
+        return_data['flow_6'] = flowmeter.Meter_data_2_plus[12]
+        return_data['flow_6_decimal'] = flowmeter.Meter_data_2_plus[13]
+        return_data['flow_7'] = flowmeter.Meter_data_2_plus[14]
+        return_data['flow_7_decimal'] = flowmeter.Meter_data_2_plus[15]
+        return_data['flow_8'] = flowmeter.Meter_data_2_plus[16]
+        return_data['flow_8_decimal'] = flowmeter.Meter_data_2_plus[17]
+        return_data['flow_9'] = flowmeter.Meter_data_2_plus[18]
+        return_data['flow_9_decimal'] = flowmeter.Meter_data_2_plus[19]
+        return_data['flow_10'] = flowmeter.Meter_data_2_plus[20]
+        return_data['flow_10_decimal'] = flowmeter.Meter_data_2_plus[21]
+        return_data['flow_11'] = flowmeter.Meter_data_2_plus[22]
+        return_data['flow_11_decimal'] = flowmeter.Meter_data_2_plus[23]
+        return_data['flow_12'] = flowmeter.Meter_data_2_plus[24]
+        return_data['flow_12_decimal'] = flowmeter.Meter_data_2_plus[25]
+        return_data['flow_13'] = flowmeter.Meter_data_2_plus[26]
+        return_data['flow_13_decimal'] = flowmeter.Meter_data_2_plus[27]
+        return_data['flow_14'] = flowmeter.Meter_data_2_plus[28]
+        return_data['flow_14_decimal'] = flowmeter.Meter_data_2_plus[29]
+        return_data['high_flow_1'] = flowmeter.Meter_data_2_plus[30]
+        return_data['high_flow_2'] = flowmeter.Meter_data_2_plus[31]
+        return_data['high_flow_3'] = flowmeter.Meter_data_2_plus[32]
+        return_data['high_flow_4'] = flowmeter.Meter_data_2_plus[33]
+        return_data['high_flow_5'] = flowmeter.Meter_data_2_plus[34]
+        return_data['high_flow_6'] = flowmeter.Meter_data_2_plus[35]
+        return_data['high_flow_7'] = flowmeter.Meter_data_2_plus[36]
+        return_data['high_flow_8'] = flowmeter.Meter_data_2_plus[37]
+        return_data['high_flow_9'] = flowmeter.Meter_data_2_plus[38]
+        return_data['high_flow_10'] = flowmeter.Meter_data_2_plus[39]
+        return_data['high_flow_11'] = flowmeter.Meter_data_2_plus[40]
+        return_data['high_flow_12'] = flowmeter.Meter_data_2_plus[41]
+        return_data['high_flow_13'] = flowmeter.Meter_data_2_plus[42]
+        return_data['high_flow_14'] = flowmeter.Meter_data_2_plus[43]
+        return_data['low_flow_1'] = flowmeter.Meter_data_2_plus[44]
+        return_data['low_flow_2'] = flowmeter.Meter_data_2_plus[45]
+        return_data['low_flow_3'] = flowmeter.Meter_data_2_plus[46]
+        return_data['low_flow_4'] = flowmeter.Meter_data_2_plus[47]
+        return_data['low_flow_5'] = flowmeter.Meter_data_2_plus[48]
+        return_data['low_flow_6'] = flowmeter.Meter_data_2_plus[49]
+        return_data['low_flow_7'] = flowmeter.Meter_data_2_plus[50]
+        return_data['low_flow_8'] = flowmeter.Meter_data_2_plus[51]
+        return_data['low_flow_9'] = flowmeter.Meter_data_2_plus[52]
+        return_data['low_flow_10'] = flowmeter.Meter_data_2_plus[53]
+        return_data['low_flow_11'] = flowmeter.Meter_data_2_plus[54]
+        return_data['low_flow_12'] = flowmeter.Meter_data_2_plus[55]
+        return_data['low_flow_13'] = flowmeter.Meter_data_2_plus[56]
+        return_data['low_flow_14'] = flowmeter.Meter_data_2_plus[57]
+        return_data['conductivity'] = flow_meter_1.Meter_data_2_plus[58]
+        return_data['conductivity_high'] = flow_meter_1.Meter_data_2_plus[59]
+        return_data['conductivity_low'] = flow_meter_1.Meter_data_2_plus[60]
+        return_data['display_length'] = flow_meter_1.Meter_data_2_plus[61]
+        return_data['total_1'] = flow_meter_1.Meter_data_2_plus[62]
+        return_data['total_2'] = flow_meter_1.Meter_data_2_plus[63]
+        return_data['total_3'] = flow_meter_1.Meter_data_2_plus[64]
+        return_data['total_4'] = flow_meter_1.Meter_data_2_plus[65]
+        return_data['total_5'] = flow_meter_1.Meter_data_2_plus[66]
+        return_data['total_6'] = flow_meter_1.Meter_data_2_plus[67]
+        return_data['total_7'] = flow_meter_1.Meter_data_2_plus[68]
+        return_data['total_8'] = flow_meter_1.Meter_data_2_plus[69]
+        return_data['total_9'] = flow_meter_1.Meter_data_2_plus[71]
+        return_data['total_10'] = flow_meter_1.Meter_data_2_plus[72]
+        return_data['total_11'] = flow_meter_1.Meter_data_2_plus[73]
+        return_data['total_12'] = flow_meter_1.Meter_data_2_plus[74]
+        return_data['total_13'] = flow_meter_1.Meter_data_2_plus[75]
+        return_data['total_14'] = flow_meter_1.Meter_data_2_plus[76]
     return return_data
 
 
@@ -387,7 +568,6 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
 def refresh_parameter_all():
     # 更新时间
     date_time = date_time_now_text(datetime.datetime.now())
-    MainWindow.label_28.setText(date_time)
     # frame闪烁
     # global frame_flash
     # if frame_flash == 0:
@@ -402,9 +582,6 @@ def refresh_parameter_all():
         flow_meter_1.display_data_ch4['x'][i] = flow_meter_1.display_data_ch4['x'][i + 1]
         flow_meter_1.display_data_ch5['x'][i] = flow_meter_1.display_data_ch5['x'][i + 1]
         flow_meter_1.display_data_ch6['x'][i] = flow_meter_1.display_data_ch6['x'][i + 1]
-        flow_meter_1.display_pid_flow['x'][i] = flow_meter_1.display_pid_flow['x'][i + 1]
-        flow_meter_1.display_valve_position['x'][i] = flow_meter_1.display_valve_position['x'][i + 1]
-        flow_meter_1.display_pid_set_point['x'][i] = flow_meter_1.display_pid_set_point['x'][i + 1]
 
     flow_meter_1.display_data_ch1['x'][28799] = time_now_text(datetime.datetime.now())
     flow_meter_1.display_data_ch2['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
@@ -412,109 +589,211 @@ def refresh_parameter_all():
     flow_meter_1.display_data_ch4['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
     flow_meter_1.display_data_ch5['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
     flow_meter_1.display_data_ch6['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
-    flow_meter_1.display_pid_flow['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
-    flow_meter_1.display_valve_position['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
-    flow_meter_1.display_pid_set_point['x'][28799] = flow_meter_1.display_data_ch1['x'][28799]
 
     # 在界面显示
-    pulse_1 = refresh_return_data['meter_1']['pulse_1']
-    MainWindow.lcdNumber.display(pulse_1)  # 脉冲1
-    pulse_2 = refresh_return_data['meter_1']['pulse_2']
-    MainWindow.lcdNumber_24.display(pulse_2)  # 脉冲2
-    pulse_3 = refresh_return_data['meter_1']['pulse_3']
-    MainWindow.lcdNumber_6.display(pulse_3)  # 脉冲3
-    pulse_4 = refresh_return_data['meter_1']['pulse_4']
-    MainWindow.lcdNumber_22.display(pulse_4)  # 脉冲4
-    pulse_5 = refresh_return_data['meter_1']['pulse_5']
-    MainWindow.lcdNumber_9.display(pulse_5)  # 脉冲5
-    pulse_6 = refresh_return_data['meter_1']['pulse_6']
-    MainWindow.lcdNumber_14.display(pulse_6)  # 脉冲6
-    spm_1 = refresh_return_data['meter_1']['SPM1']
-    MainWindow.lcdNumber_10.display(spm_1)  # SPM1
-    spm_2 = refresh_return_data['meter_1']['SPM2']
-    MainWindow.lcdNumber_21.display(spm_2)  # SPM2
-    spm_3 = refresh_return_data['meter_1']['SPM3']
-    MainWindow.lcdNumber_13.display(spm_3)  # SPM3
-    spm_4 = refresh_return_data['meter_1']['SPM4']
-    MainWindow.lcdNumber_16.display(spm_4)  # SPM4
-    ma_signal_1 = refresh_return_data['meter_1']['4-20mA_1']
-    ma_signal_1 = ma_signal_1 / 27648 * 20
-    MainWindow.lcdNumber_17.display(ma_signal_1)  # 4-20mA1
-    ma_signal_2 = refresh_return_data['meter_1']['4-20mA_2']
-    ma_signal_2 = ma_signal_2 / 27648 * 20
-    MainWindow.lcdNumber_12.display(ma_signal_2)  # 4-20mA2
-    ma_signal_3 = refresh_return_data['meter_1']['4-20mA_3']
-    ma_signal_3 = ma_signal_3 / 27648 * 20
-    MainWindow.lcdNumber_18.display(ma_signal_3)  # 4-20mA3
-    ma_signal_4 = refresh_return_data['meter_1']['4-20mA_4']
-    ma_signal_4 = ma_signal_4 / 27648 * 20
-    MainWindow.lcdNumber_23.display(ma_signal_4)  # 4-20mA4
-    flow_cylinder_100 = refresh_return_data['meter_1']['flow_cylinder_100']
-    MainWindow.lcdNumber_11.display(flow_cylinder_100)  # 标定柱标定流量
-    flow_cylinder_2000 = refresh_return_data['meter_1']['flow_cylinder_2000']
-    MainWindow.lcdNumber_25.display(flow_cylinder_2000)  # 标定柱标定流量
+    # 仪表1
+    flow_1_int = refresh_return_data['meter_1']['flow_1']
+    flow_1_decimal = refresh_return_data['meter_1']['flow_1_decimal']
+    flow_1 = flow_1_int + flow_1_decimal / 1000
+    MainWindow.lcdNumber_6.display(flow_1)  # 流量1
+    flow_1_lph = ml_min_to_l_h(flow_1)
+    MainWindow.lcdNumber_5.display(flow_1_lph)  # 流量1
+    total_1 = refresh_return_data['meter_1']['total_1']
+    # MainWindow.lcdNumber_4.display(total_1)  # 累积1
+    flow_2_int = refresh_return_data['meter_1']['flow_2']
+    flow_2_decimal = refresh_return_data['meter_1']['flow_2_decimal']
+    flow_2 = flow_2_int + flow_2_decimal / 1000
+    MainWindow.lcdNumber_22.display(flow_2)  # 流量2
+    flow_2_lph = ml_min_to_l_h(flow_2)
+    MainWindow.lcdNumber_15.display(flow_2_lph)  # 流量2
+    total_2 = refresh_return_data['meter_1']['total_2']
+    # MainWindow.lcdNumber_13.display(total_2)  # 累积1
 
-    # pid控制流量显示
-    # 控制状态
-    pid_control_status = refresh_return_data['meter_1']['pid_control']
-    if pid_control_status == 1:
-        MainWindow.label_44.setStyleSheet("background-color: rgb(0, 255, 0);\n")
-    else:
-        MainWindow.label_44.setStyleSheet("background-color: rgb(255, 0, 0);\n")
-    # pid-流量
-    MainWindow.lcdNumber_4.display(refresh_return_data['meter_1']['pid_flow'])
-    # 标定柱容积
-    MainWindow.lcdNumber_8.display(refresh_return_data['meter_1']['calibration_pot_select'])
-    # 阀门开度
-    pid_valve_position = ma_signal_4 / 20 * 100
-    MainWindow.lcdNumber_3.display(pid_valve_position)
-    # 探头通道
-    MainWindow.lcdNumber_5.display(refresh_return_data['meter_1']['pid_control_channel'])
-    # 探头K值
-    MainWindow.lcdNumber_7.display(refresh_return_data['meter_1']['sensor_k_factor'])
-    # 流量设置值
-    MainWindow.lcdNumber_15.display(refresh_return_data['meter_1']['pid_set_point'])
+    high_flow_1 = refresh_return_data['meter_1']['high_flow_1']
+    high_flow_2 = refresh_return_data['meter_1']['high_flow_2']
+    low_flow_1 = refresh_return_data['meter_1']['low_flow_1']
+    low_flow_2 = refresh_return_data['meter_1']['low_flow_2']
 
-    pump_1_status = refresh_return_data['meter_1']['pump_1_status']
-    if pump_1_status == 1:
-        MainWindow.label_39.setStyleSheet("background-color: rgb(0, 255, 0);\n")
+    #     通道1流量报警
+    #     过高
+    if  high_flow_1:
+        MainWindow.label_21.setText("报警")
+        MainWindow.label_21.setStyleSheet("background-color: rgb(255, 0, 0);\n")
     else:
-        MainWindow.label_39.setStyleSheet("background-color: rgb(255, 0, 0);\n")
-    pump_2_status = refresh_return_data['meter_1']['pump_2_status']
-    if pump_2_status == 1:
-        MainWindow.label_40.setStyleSheet("background-color: rgb(0, 255, 0);\n")
+        MainWindow.label_21.setText("正常")
+        MainWindow.label_21.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_1:
+        MainWindow.label_22.setText("报警")
+        MainWindow.label_22.setStyleSheet("background-color: rgb(255, 0, 0);\n")
     else:
-        MainWindow.label_40.setStyleSheet("background-color: rgb(255, 0, 0);\n")
-    pump_3_status = refresh_return_data['meter_1']['pump_3_status']
-    if pump_3_status == 1:
-        MainWindow.label_41.setStyleSheet("background-color: rgb(0, 255, 0);\n")
+        MainWindow.label_22.setText("正常")
+        MainWindow.label_22.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
+    #     通道2流量报警
+    #     过高
+    if  high_flow_2:
+        MainWindow.label_56.setText("报警")
+        MainWindow.label_56.setStyleSheet("background-color: rgb(255, 0, 0);\n")
     else:
-        MainWindow.label_41.setStyleSheet("background-color: rgb(255, 0, 0);\n")
-    pump_4_status = refresh_return_data['meter_1']['pump_4_status']
-    if pump_4_status == 1:
-        MainWindow.label_42.setStyleSheet("background-color: rgb(0, 255, 0);\n")
+        MainWindow.label_56.setText("正常")
+        MainWindow.label_56.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_2:
+        MainWindow.label_57.setText("报警")
+        MainWindow.label_57.setStyleSheet("background-color: rgb(255, 0, 0);\n")
     else:
-        MainWindow.label_42.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+        MainWindow.label_57.setText("正常")
+        MainWindow.label_57.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
+    # 仪表2
+    flow_3_int = refresh_return_data['meter_1']['flow_3']
+    flow_3_decimal = refresh_return_data['meter_1']['flow_3_decimal']
+    flow_3 = flow_3_int + flow_3_decimal / 1000
+    MainWindow.lcdNumber_21.display(flow_3)  # 流量3
+    flow_3_lph = ml_min_to_l_h(flow_3)
+    MainWindow.lcdNumber_16.display(flow_3_lph)  # 流量3
+    total_3 = refresh_return_data['meter_1']['total_3']
+    # MainWindow.lcdNumber_23.display(total_3)  # 累积3
+    flow_4_int = refresh_return_data['meter_1']['flow_4']
+    flow_4_decimal = refresh_return_data['meter_1']['flow_4_decimal']
+    flow_4 = flow_4_int + flow_4_decimal / 1000
+    MainWindow.lcdNumber_9.display(flow_4)  # 流量3
+    flow_4_lph = ml_min_to_l_h(flow_4)
+    MainWindow.lcdNumber_8.display(flow_4_lph)  # 流量3
+    total_4 = refresh_return_data['meter_1']['total_3']
+    # MainWindow.lcdNumber_7.display(total_4)  # 累积3
+
+    high_flow_3 = refresh_return_data['meter_1']['high_flow_3']
+    high_flow_4 = refresh_return_data['meter_1']['high_flow_4']
+    low_flow_3 = refresh_return_data['meter_1']['low_flow_3']
+    low_flow_4 = refresh_return_data['meter_1']['low_flow_4']
+
+    #     通道3流量报警
+    #     过高
+    if  high_flow_3:
+        MainWindow.label_50.setText("报警")
+        MainWindow.label_50.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_50.setText("正常")
+        MainWindow.label_50.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_3:
+        MainWindow.label_51.setText("报警")
+        MainWindow.label_51.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_51.setText("正常")
+        MainWindow.label_51.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
+    #     通道4流量报警
+    #     过高
+    if  high_flow_4:
+        MainWindow.label_25.setText("报警")
+        MainWindow.label_25.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_25.setText("正常")
+        MainWindow.label_25.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_4:
+        MainWindow.label_26.setText("报警")
+        MainWindow.label_26.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_26.setText("正常")
+        MainWindow.label_26.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
+    # 仪表3
+    flow_5_int = refresh_return_data['meter_1']['flow_5']
+    flow_5_decimal = refresh_return_data['meter_1']['flow_5_decimal']
+    flow_5 = flow_5_int + flow_5_decimal / 1000
+    MainWindow.lcdNumber_14.display(flow_5)  # 流量5
+    flow_5_lph = ml_min_to_l_h(flow_5)
+    MainWindow.lcdNumber_20.display(flow_5_lph)  # 流量5
+    total_5 = refresh_return_data['meter_1']['total_5']
+    # MainWindow.lcdNumber_18.display(total_5)  # 累积5
+    flow_6_int = refresh_return_data['meter_1']['flow_6']
+    flow_6_decimal = refresh_return_data['meter_1']['flow_6_decimal']
+    flow_6 = flow_6_int + flow_6_decimal / 1000
+    MainWindow.lcdNumber_12.display(flow_6)  # 流量6
+    flow_6_lph = ml_min_to_l_h(flow_6)
+    MainWindow.lcdNumber_11.display(flow_6_lph)  # 流量6
+    total_6 = refresh_return_data['meter_1']['total_6']
+    # MainWindow.lcdNumber_10.display(total_6)  # 累积5
+
+    high_flow_5 = refresh_return_data['meter_1']['high_flow_5']
+    high_flow_6 = refresh_return_data['meter_1']['high_flow_6']
+    low_flow_5 = refresh_return_data['meter_1']['low_flow_5']
+    low_flow_6 = refresh_return_data['meter_1']['low_flow_6']
+
+    #     通道5流量报警
+    #     过高
+    if  high_flow_5:
+        MainWindow.label_46.setText("报警")
+        MainWindow.label_46.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_46.setText("正常")
+        MainWindow.label_46.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_5:
+        MainWindow.label_47.setText("报警")
+        MainWindow.label_47.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_47.setText("正常")
+        MainWindow.label_47.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
+    #     通道6流量报警
+    #     过高
+    if  high_flow_6:
+        MainWindow.label_35.setText("报警")
+        MainWindow.label_35.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_35.setText("正常")
+        MainWindow.label_35.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+    # 过低
+    if  low_flow_6:
+        MainWindow.label_36.setText("报警")
+        MainWindow.label_36.setStyleSheet("background-color: rgb(255, 0, 0);\n")
+    else:
+        MainWindow.label_36.setText("正常")
+        MainWindow.label_36.setStyleSheet("background-color: rgb(240, 240, 240);\n")
+
     # 更新曲线
     for i in range(28799):
         flow_meter_1.display_data_ch1['y'][i] = flow_meter_1.display_data_ch1['y'][i + 1]
+        flow_meter_1.display_data_ch1['h'][i] = flow_meter_1.display_data_ch1['h'][i + 1]
+        flow_meter_1.display_data_ch1['l'][i] = flow_meter_1.display_data_ch1['l'][i + 1]
         flow_meter_1.display_data_ch2['y'][i] = flow_meter_1.display_data_ch2['y'][i + 1]
+        flow_meter_1.display_data_ch2['h'][i] = flow_meter_1.display_data_ch2['h'][i + 1]
+        flow_meter_1.display_data_ch2['l'][i] = flow_meter_1.display_data_ch2['l'][i + 1]
         flow_meter_1.display_data_ch3['y'][i] = flow_meter_1.display_data_ch3['y'][i + 1]
+        flow_meter_1.display_data_ch3['h'][i] = flow_meter_1.display_data_ch3['h'][i + 1]
+        flow_meter_1.display_data_ch3['l'][i] = flow_meter_1.display_data_ch3['l'][i + 1]
         flow_meter_1.display_data_ch4['y'][i] = flow_meter_1.display_data_ch4['y'][i + 1]
+        flow_meter_1.display_data_ch4['h'][i] = flow_meter_1.display_data_ch4['h'][i + 1]
+        flow_meter_1.display_data_ch4['l'][i] = flow_meter_1.display_data_ch4['l'][i + 1]
         flow_meter_1.display_data_ch5['y'][i] = flow_meter_1.display_data_ch5['y'][i + 1]
+        flow_meter_1.display_data_ch5['h'][i] = flow_meter_1.display_data_ch5['h'][i + 1]
+        flow_meter_1.display_data_ch5['l'][i] = flow_meter_1.display_data_ch5['l'][i + 1]
         flow_meter_1.display_data_ch6['y'][i] = flow_meter_1.display_data_ch6['y'][i + 1]
-        flow_meter_1.display_pid_flow['y'][i] = flow_meter_1.display_pid_flow['y'][i + 1]
-        flow_meter_1.display_valve_position['y'][i] = flow_meter_1.display_valve_position['y'][i + 1]
-        flow_meter_1.display_pid_set_point['y'][i] = flow_meter_1.display_pid_set_point['y'][i + 1]
-    flow_meter_1.display_data_ch1['y'][28799] = pulse_1
-    flow_meter_1.display_data_ch2['y'][28799] = pulse_2
-    flow_meter_1.display_data_ch3['y'][28799] = pulse_3
-    flow_meter_1.display_data_ch4['y'][28799] = pulse_4
-    flow_meter_1.display_data_ch5['y'][28799] = pulse_5
-    flow_meter_1.display_data_ch6['y'][28799] = pulse_6
-    flow_meter_1.display_pid_flow['y'][28799] = refresh_return_data['meter_1']['pid_flow']
-    flow_meter_1.display_valve_position['y'][28799] = pid_valve_position
-    flow_meter_1.display_pid_set_point['y'][28799] = refresh_return_data['meter_1']['pid_set_point']
+        flow_meter_1.display_data_ch6['h'][i] = flow_meter_1.display_data_ch6['h'][i + 1]
+        flow_meter_1.display_data_ch6['l'][i] = flow_meter_1.display_data_ch6['l'][i + 1]
+    flow_meter_1.display_data_ch1['y'][28799] = flow_1
+    flow_meter_1.display_data_ch1['h'][28799] = high_flow_1
+    flow_meter_1.display_data_ch1['l'][28799] = low_flow_1
+    flow_meter_1.display_data_ch2['y'][28799] = flow_2
+    flow_meter_1.display_data_ch2['h'][28799] = high_flow_2
+    flow_meter_1.display_data_ch2['l'][28799] = low_flow_2
+    flow_meter_1.display_data_ch3['y'][28799] = flow_3
+    flow_meter_1.display_data_ch3['h'][28799] = high_flow_3
+    flow_meter_1.display_data_ch3['l'][28799] = low_flow_3
+    flow_meter_1.display_data_ch4['y'][28799] = flow_4
+    flow_meter_1.display_data_ch4['h'][28799] = high_flow_4
+    flow_meter_1.display_data_ch4['l'][28799] = low_flow_4
+    flow_meter_1.display_data_ch5['y'][28799] = flow_5
+    flow_meter_1.display_data_ch5['h'][28799] = high_flow_5
+    flow_meter_1.display_data_ch5['l'][28799] = low_flow_5
+    flow_meter_1.display_data_ch6['y'][28799] = flow_6
+    flow_meter_1.display_data_ch6['h'][28799] = high_flow_6
+    flow_meter_1.display_data_ch6['l'][28799] = low_flow_6
 
 
 #  定时连接RS-485函数
@@ -562,8 +841,6 @@ def figure_refresh():
     Plot_meter_data_4.update_figure()
     Plot_meter_data_5.update_figure()
     Plot_meter_data_6.update_figure()
-    Plot_pid_flow.update_figure()
-    Plot_valve_position.update_figure()
 
     update_figure = threading.Timer(1.0, figure_refresh)  # 初始化threading定时器
     # 主进程存活时继续运行，主进程停止时停止
@@ -572,6 +849,7 @@ def figure_refresh():
 
 update_figure = threading.Timer(1.0, figure_refresh)
 update_figure.start()  # 启动threading定时器
+
 
 # TODO:3.1.2 运行曲线界面-类
 class PlotCanvas(FigureCanvas):
@@ -583,9 +861,8 @@ class PlotCanvas(FigureCanvas):
                  dpi,
                  plot_x,
                  plot_y,
-                 set_point_enable,
-                 set_point_x,
-                 set_point_y,
+                 plot_h,
+                 plot_l,
                  plot_tittle):
         fig = Figure(figsize=(width, height), dpi=dpi)
         fig.subplots_adjust(left=0.17, right=0.85, top=0.85, bottom=0.17)  # 调整图像占画布大小
@@ -598,66 +875,69 @@ class PlotCanvas(FigureCanvas):
         FigureCanvas.updateGeometry(self)
         self.plot_x = plot_x
         self.plot_y = plot_y
-        self.set_point_enable = set_point_enable
-        self.set_point_x = set_point_x
-        self.set_point_y = set_point_y
+        self.plot_h = plot_h
+        self.plot_l = plot_l
         self.plot_tittle = plot_tittle
 
     def update_figure(self):
         self.axes.cla()
         if display_length['length'] == '5min':
+            meter_1_ch1_display_x = self.plot_x[-60:]
+            meter_1_ch1_display_y = self.plot_y[-60:]
+            meter_1_ch1_display_h = self.plot_h[-60:]
+            meter_1_ch1_display_l = self.plot_l[-60:]
+        elif display_length['length'] == '10min':
+            meter_1_ch1_display_x = self.plot_x[-120:]
+            meter_1_ch1_display_y = self.plot_y[-120:]
+            meter_1_ch1_display_h = self.plot_h[-120:]
+            meter_1_ch1_display_l = self.plot_l[-120:]
+        elif display_length['length'] == '30min':
+            meter_1_ch1_display_x = self.plot_x[-180:]
+            meter_1_ch1_display_y = self.plot_y[-180:]
+            meter_1_ch1_display_h = self.plot_h[-180:]
+            meter_1_ch1_display_l = self.plot_l[-180:]
+        elif display_length['length'] == '1hour':
+            # 5min
             meter_1_ch1_display_x = self.plot_x[-300:]
             meter_1_ch1_display_y = self.plot_y[-300:]
-            set_point_display_x = self.set_point_x[-300:]
-            set_point_display_y = self.set_point_y[-300:]
-        elif display_length['length'] == '10min':
+            meter_1_ch1_display_h = self.plot_h[-300:]
+            meter_1_ch1_display_l = self.plot_l[-300:]
+        elif display_length['length'] == '4hour':
+            # 10min
             meter_1_ch1_display_x = self.plot_x[-600:]
             meter_1_ch1_display_y = self.plot_y[-600:]
-            set_point_display_x = self.set_point_x[-600:]
-            set_point_display_y = self.set_point_y[-600:]
-        elif display_length['length'] == '30min':
-            meter_1_ch1_display_x = self.plot_x[-1800:]
-            meter_1_ch1_display_y = self.plot_y[-1800:]
-            set_point_display_x = self.set_point_x[-1800:]
-            set_point_display_y = self.set_point_y[-1800:]
-        elif display_length['length'] == '1hour':
-            meter_1_ch1_display_x = self.plot_x[-3600:]
-            meter_1_ch1_display_y = self.plot_y[-3600:]
-            set_point_display_x = self.set_point_x[-3600:]
-            set_point_display_y = self.set_point_y[-3600:]
-        elif display_length['length'] == '4hour':
-            meter_1_ch1_display_x = self.plot_x[-14400:]
-            meter_1_ch1_display_y = self.plot_y[-14400:]
-            set_point_display_x = self.set_point_x[-14400:]
-            set_point_display_y = self.set_point_y[-14400:]
+            meter_1_ch1_display_h = self.plot_h[-600:]
+            meter_1_ch1_display_l = self.plot_l[-600:]
         elif display_length['length'] == '8hour':
-            meter_1_ch1_display_x = self.plot_x[-28800:]
-            meter_1_ch1_display_y = self.plot_y[-28800:]
-            set_point_display_x = self.set_point_x[-28800:]
-            set_point_display_y = self.set_point_y[-28800:]
+            # 15min
+            meter_1_ch1_display_x = self.plot_x[-900:]
+            meter_1_ch1_display_y = self.plot_y[-900:]
+            meter_1_ch1_display_h = self.plot_h[-900:]
+            meter_1_ch1_display_l = self.plot_l[-900:]
 
         self.axes.plot(meter_1_ch1_display_x, meter_1_ch1_display_y, label=self.plot_tittle, color='red')
-        if self.set_point_enable == 1:
-            self.axes.plot(set_point_display_x, set_point_display_y, label='流量设定', color='black')
+        self.axes.plot(meter_1_ch1_display_x, meter_1_ch1_display_h, label='高报警', color='green')
+        self.axes.plot(meter_1_ch1_display_x, meter_1_ch1_display_l, label='低报警', color='black')
         self.axes.legend()
         if display_length['length'] == '5min':
+            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(15))
+            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(3))
+        elif display_length['length'] == '10min':
+            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(30))
+            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(6))
+        elif display_length['length'] == '30min':
+            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(45))
+            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(9))
+        elif display_length['length'] == '1hour':
+            # 5min
             self.axes.xaxis.set_major_locator(ticker.MultipleLocator(75))
             self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(15))
-        elif display_length['length'] == '10min':
+        elif display_length['length'] == '4hour':
             self.axes.xaxis.set_major_locator(ticker.MultipleLocator(150))
             self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(30))
-        elif display_length['length'] == '30min':
-            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(450))
-            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(90))
-        elif display_length['length'] == '1hour':
-            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(900))
-            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(180))
-        elif display_length['length'] == '4hour':
-            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(3600))
-            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(720))
         elif display_length['length'] == '8hour':
-            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(7200))
-            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(1440))
+            self.axes.xaxis.set_major_locator(ticker.MultipleLocator(225))
+            self.axes.xaxis.set_minor_locator(ticker.MultipleLocator(45))
         self.axes.yaxis.grid(True)
         self.axes.xaxis.grid(True)
         self.axes.set_title(self.plot_tittle)
@@ -665,71 +945,49 @@ class PlotCanvas(FigureCanvas):
 
 
 # TODO:3.1.3 运行曲线界面-定义
-Plot_pid_flow = PlotCanvas(MainWindow, 3.5, 3, 100,
-                           flow_meter_1.display_pid_flow['x'],
-                           flow_meter_1.display_pid_flow['y'],
-                           1,
-                           flow_meter_1.display_pid_set_point['x'],
-                           flow_meter_1.display_pid_set_point['y'],
-                           'PID流量')
-Plot_pid_flow.move(480, 30)
-Plot_valve_position = PlotCanvas(MainWindow, 3.5, 3, 100,
-                                 flow_meter_1.display_valve_position['x'],
-                                 flow_meter_1.display_valve_position['y'],
-                                 0,
-                                 flow_meter_1.display_pid_set_point['x'],
-                                 flow_meter_1.display_pid_set_point['y'],
-                                 '阀门开度')
-Plot_valve_position.move(800, 30)
-Plot_meter_data = PlotCanvas(MainWindow, 3.5, 3, 100,
+# TODO:3.1.3.1 A方案
+Plot_meter_data = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                              flow_meter_1.display_data_ch1['x'],
                              flow_meter_1.display_data_ch1['y'],
-                             0,
-                             flow_meter_1.display_pid_set_point['x'],
-                             flow_meter_1.display_pid_set_point['y'],
-                             '通道1')
-Plot_meter_data.move(480, 310)
-Plot_meter_data_2 = PlotCanvas(MainWindow, 3.5, 3, 100,
+                             flow_meter_1.display_data_ch1['h'],
+                             flow_meter_1.display_data_ch1['l'],
+                             'B1')
+Plot_meter_data.move(50, 160)
+Plot_meter_data_2 = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                                flow_meter_1.display_data_ch2['x'],
                                flow_meter_1.display_data_ch2['y'],
-                               0,
-                               flow_meter_1.display_pid_set_point['x'],
-                               flow_meter_1.display_pid_set_point['y'],
-                               '通道2')
-Plot_meter_data_2.move(800, 310)
-Plot_meter_data_3 = PlotCanvas(MainWindow, 3.5, 3, 100,
+                               flow_meter_1.display_data_ch2['h'],
+                               flow_meter_1.display_data_ch2['l'],
+                               'B2')
+Plot_meter_data_2.move(50, 600)
+Plot_meter_data_3 = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                                flow_meter_1.display_data_ch3['x'],
                                flow_meter_1.display_data_ch3['y'],
-                               0,
-                               flow_meter_1.display_pid_set_point['x'],
-                               flow_meter_1.display_pid_set_point['y'],
-                               '通道3')
-Plot_meter_data_3.move(1120, 310)
-Plot_meter_data_4 = PlotCanvas(MainWindow, 3.5, 3, 100,
+                               flow_meter_1.display_data_ch3['h'],
+                               flow_meter_1.display_data_ch3['l'],
+                               'B3')
+Plot_meter_data_3.move(550, 160)
+Plot_meter_data_4 = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                                flow_meter_1.display_data_ch4['x'],
                                flow_meter_1.display_data_ch4['y'],
-                               0,
-                               flow_meter_1.display_pid_set_point['x'],
-                               flow_meter_1.display_pid_set_point['y'],
-                               '通道4')
-Plot_meter_data_4.move(480, 590)
-Plot_meter_data_5 = PlotCanvas(MainWindow, 3.5, 3, 100,
+                               flow_meter_1.display_data_ch4['h'],
+                               flow_meter_1.display_data_ch4['l'],
+                               'B4')
+Plot_meter_data_4.move(550, 600)
+Plot_meter_data_5 = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                                flow_meter_1.display_data_ch5['x'],
                                flow_meter_1.display_data_ch5['y'],
-                               0,
-                               flow_meter_1.display_pid_set_point['x'],
-                               flow_meter_1.display_pid_set_point['y'],
-                               '通道5')
-Plot_meter_data_5.move(800, 590)
-Plot_meter_data_6 = PlotCanvas(MainWindow, 3.5, 3, 100,
+                               flow_meter_1.display_data_ch5['h'],
+                               flow_meter_1.display_data_ch5['l'],
+                               'B5')
+Plot_meter_data_5.move(1050, 160)
+Plot_meter_data_6 = PlotCanvas(MainWindow.tab, 4.5, 3, 100,
                                flow_meter_1.display_data_ch6['x'],
                                flow_meter_1.display_data_ch6['y'],
-                               0,
-                               flow_meter_1.display_pid_set_point['x'],
-                               flow_meter_1.display_pid_set_point['y'],
-                               '通道6')
-Plot_meter_data_6.move(1120, 590)
-
+                               flow_meter_1.display_data_ch6['h'],
+                               flow_meter_1.display_data_ch6['l'],
+                               'B6')
+Plot_meter_data_6.move(1050, 600)
 
 # TODO:3.3 时间长度设置
 def display_5min():
@@ -1049,60 +1307,11 @@ def push_button_27_function():
 
 
 # TODO:7.2 界面显示初始化
-MainWindow.comboBox_2.addItem('60')
-MainWindow.comboBox_3.addItem('60')
-MainWindow.comboBox_6.addItem('60')
-MainWindow.comboBox_7.addItem('60')
-MainWindow.comboBox_8.addItem('12')
-MainWindow.comboBox_9.addItem('12')
-MainWindow.comboBox_10.addItem('12')
-MainWindow.comboBox_11.addItem('12')
-MainWindow.comboBox_12.addItems(['100', '2000'])
-MainWindow.comboBox_4.addItems(['1', '2', '3', '4', '5', '6'])
-MainWindow.comboBox_5.addItem('150')
 
 # TODO:7.3 各功能链接函数
 # 定义在主窗口打开各个子窗体的方法
-MainWindow.action5min.triggered.connect(display_5min)  # 时间长度
-MainWindow.action10min.triggered.connect(display_10min)  # 时间长度
-MainWindow.action30min.triggered.connect(display_30min)  # 时间长度
-MainWindow.action1hour.triggered.connect(display_1hour)  # 时间长度
-MainWindow.action4hour.triggered.connect(display_4hour)  # 时间长度
-MainWindow.action8hour.triggered.connect(display_8hour)  # 时间长度
-MainWindow.actionoutput_data.triggered.connect(export_data_period)  # 导出数据
-MainWindow.actiondata_clear.triggered.connect(data_drop_show)  # 清理数据
 
 # TODO:7.4 按键函数连接
-MainWindow.pushButton_2.clicked.connect(push_button_2_function)  # SPM1
-MainWindow.pushButton_3.clicked.connect(push_button_3_function)  # SPM2
-MainWindow.pushButton_4.clicked.connect(push_button_4_function)  # SPM3
-MainWindow.pushButton_5.clicked.connect(push_button_5_function)  # SPM4
-MainWindow.pushButton_6.clicked.connect(push_button_6_function)  # 4-20mA1
-MainWindow.pushButton_7.clicked.connect(push_button_7_function)  # 4-20mA2
-MainWindow.pushButton_8.clicked.connect(push_button_8_function)  # 4-20mA3
-MainWindow.pushButton_9.clicked.connect(push_button_9_function)  # 4-20mA4
-MainWindow.pushButton_10.clicked.connect(push_button_10_function)  # 1#380V
-MainWindow.pushButton_11.clicked.connect(push_button_11_function)  # 1#380V
-MainWindow.pushButton_12.clicked.connect(push_button_12_function)  # 2#380V
-MainWindow.pushButton_13.clicked.connect(push_button_13_function)  # 2#380V
-MainWindow.pushButton_14.clicked.connect(push_button_14_function)  # 3#380V
-MainWindow.pushButton_15.clicked.connect(push_button_15_function)  # 3#380V
-MainWindow.pushButton_16.clicked.connect(push_button_16_function)  # 4#380V
-MainWindow.pushButton_17.clicked.connect(push_button_17_function)  # 4#380V
-MainWindow.pushButton_19.clicked.connect(push_button_19_function)  # 1#SPM自变
-MainWindow.pushButton_23.clicked.connect(push_button_23_function)  # 2#SPM自变
-MainWindow.pushButton_20.clicked.connect(push_button_20_function)  # 3#SPM自变
-MainWindow.pushButton_24.clicked.connect(push_button_24_function)  # 4#SPM自变
-MainWindow.pushButton_21.clicked.connect(push_button_21_function)  # 1#4-20mA自变
-MainWindow.pushButton_25.clicked.connect(push_button_25_function)  # 2#4-20mA自变
-MainWindow.pushButton_22.clicked.connect(push_button_22_function)  # 3#4-20mA自变
-MainWindow.pushButton_26.clicked.connect(push_button_26_function)  # 4#4-20mA自变
-MainWindow.pushButton_29.clicked.connect(push_button_29_function)  # pid控制设定
-MainWindow.pushButton_28.clicked.connect(push_button_28_function)  # pid控制设定
-MainWindow.pushButton_30.clicked.connect(push_button_30_function)  # 选择标定柱
-MainWindow.pushButton_18.clicked.connect(push_button_18_function)  # 选择通道
-MainWindow.pushButton_31.clicked.connect(push_button_31_function)  # 计算K值
-MainWindow.pushButton_27.clicked.connect(push_button_27_function)  # 设定目标流量
 
 MainWindow.show()  # 显示主界面
 sys.exit(app.exec_())  # 退出主界面

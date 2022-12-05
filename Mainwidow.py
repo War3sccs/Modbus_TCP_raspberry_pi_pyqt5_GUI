@@ -1026,7 +1026,7 @@ class Ui_MainWindow(QMainWindow):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "东莞市隆泰美东镜业有限公司   镀膜化学品投加监控"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Paddle-flow 流量监控系统展示"))
         self.label_68.setText(_translate("MainWindow", "L/h"))
         self.label_49.setText(_translate("MainWindow", "流量过高"))
         self.label_48.setText(_translate("MainWindow", "流量过低"))
