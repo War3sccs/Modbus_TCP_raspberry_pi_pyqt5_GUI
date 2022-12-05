@@ -191,6 +191,12 @@ def ml_min_to_l_h(flow_in):
     logger_paddle.debug(flow_out)
     return flow_out
 
+# L/h转换为ml/min
+def l_h_to_ml_min(flow_in):
+    flow_out = flow_in * 1000 / 60
+    logger_paddle.debug(flow_out)
+    return flow_out
+
 
 # TODO:2.仪表类
 class FlowMeter:
@@ -595,17 +601,17 @@ def refresh_parameter_all():
     flow_1_int = refresh_return_data['meter_1']['flow_1']
     flow_1_decimal = refresh_return_data['meter_1']['flow_1_decimal']
     flow_1 = flow_1_int + flow_1_decimal / 1000
-    MainWindow.lcdNumber_6.display(flow_1)  # 流量1
-    flow_1_lph = ml_min_to_l_h(flow_1)
-    MainWindow.lcdNumber_5.display(flow_1_lph)  # 流量1
+    MainWindow.lcdNumber_5.display(flow_1)  # 流量1
+    flow_1_mlmin = l_h_to_ml_min(flow_1)
+    MainWindow.lcdNumber_6.display(flow_1_mlmin)  # 流量1
     total_1 = refresh_return_data['meter_1']['total_1']
     # MainWindow.lcdNumber_4.display(total_1)  # 累积1
     flow_2_int = refresh_return_data['meter_1']['flow_2']
     flow_2_decimal = refresh_return_data['meter_1']['flow_2_decimal']
     flow_2 = flow_2_int + flow_2_decimal / 1000
-    MainWindow.lcdNumber_22.display(flow_2)  # 流量2
-    flow_2_lph = ml_min_to_l_h(flow_2)
-    MainWindow.lcdNumber_15.display(flow_2_lph)  # 流量2
+    MainWindow.lcdNumber_15.display(flow_2)  # 流量2
+    flow_2_mlmin = l_h_to_ml_min(flow_2)
+    MainWindow.lcdNumber_22.display(flow_2_mlmin)  # 流量2
     total_2 = refresh_return_data['meter_1']['total_2']
     # MainWindow.lcdNumber_13.display(total_2)  # 累积1
 
@@ -650,17 +656,17 @@ def refresh_parameter_all():
     flow_3_int = refresh_return_data['meter_1']['flow_3']
     flow_3_decimal = refresh_return_data['meter_1']['flow_3_decimal']
     flow_3 = flow_3_int + flow_3_decimal / 1000
-    MainWindow.lcdNumber_21.display(flow_3)  # 流量3
-    flow_3_lph = ml_min_to_l_h(flow_3)
-    MainWindow.lcdNumber_16.display(flow_3_lph)  # 流量3
+    MainWindow.lcdNumber_16.display(flow_3)  # 流量3
+    flow_3_mlmin = l_h_to_ml_min(flow_3)
+    MainWindow.lcdNumber_21.display(flow_3_mlmin)  # 流量3
     total_3 = refresh_return_data['meter_1']['total_3']
     # MainWindow.lcdNumber_23.display(total_3)  # 累积3
     flow_4_int = refresh_return_data['meter_1']['flow_4']
     flow_4_decimal = refresh_return_data['meter_1']['flow_4_decimal']
     flow_4 = flow_4_int + flow_4_decimal / 1000
-    MainWindow.lcdNumber_9.display(flow_4)  # 流量3
-    flow_4_lph = ml_min_to_l_h(flow_4)
-    MainWindow.lcdNumber_8.display(flow_4_lph)  # 流量3
+    MainWindow.lcdNumber_8.display(flow_4)  # 流量3
+    flow_4_mlmin = l_h_to_ml_min(flow_4)
+    MainWindow.lcdNumber_9.display(flow_4_mlmin)  # 流量3
     total_4 = refresh_return_data['meter_1']['total_3']
     # MainWindow.lcdNumber_7.display(total_4)  # 累积3
 
@@ -705,17 +711,17 @@ def refresh_parameter_all():
     flow_5_int = refresh_return_data['meter_1']['flow_5']
     flow_5_decimal = refresh_return_data['meter_1']['flow_5_decimal']
     flow_5 = flow_5_int + flow_5_decimal / 1000
-    MainWindow.lcdNumber_14.display(flow_5)  # 流量5
-    flow_5_lph = ml_min_to_l_h(flow_5)
-    MainWindow.lcdNumber_20.display(flow_5_lph)  # 流量5
+    MainWindow.lcdNumber_20.display(flow_5)  # 流量5
+    flow_5_mlmin = l_h_to_ml_min(flow_5)
+    MainWindow.lcdNumber_14.display(flow_5_mlmin)  # 流量5
     total_5 = refresh_return_data['meter_1']['total_5']
     # MainWindow.lcdNumber_18.display(total_5)  # 累积5
     flow_6_int = refresh_return_data['meter_1']['flow_6']
     flow_6_decimal = refresh_return_data['meter_1']['flow_6_decimal']
     flow_6 = flow_6_int + flow_6_decimal / 1000
-    MainWindow.lcdNumber_12.display(flow_6)  # 流量6
-    flow_6_lph = ml_min_to_l_h(flow_6)
-    MainWindow.lcdNumber_11.display(flow_6_lph)  # 流量6
+    MainWindow.lcdNumber_11.display(flow_6)  # 流量6
+    flow_6_mlmin = l_h_to_ml_min(flow_6)
+    MainWindow.lcdNumber_12.display(flow_6_mlmin)  # 流量6
     total_6 = refresh_return_data['meter_1']['total_6']
     # MainWindow.lcdNumber_10.display(total_6)  # 累积5
 
