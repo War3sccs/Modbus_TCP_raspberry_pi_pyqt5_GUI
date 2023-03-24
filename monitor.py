@@ -418,6 +418,7 @@ def refresh_parameter_all():
 
     # 在界面显示
     pulse_1 = refresh_return_data['meter_1']['pulse_1']
+    pulse_1 = int(pulse_1 / 2)
     MainWindow.lcdNumber.display(pulse_1)  # 脉冲1
     pulse_2 = refresh_return_data['meter_1']['pulse_2']
     MainWindow.lcdNumber_24.display(pulse_2)  # 脉冲2
@@ -462,18 +463,24 @@ def refresh_parameter_all():
     else:
         MainWindow.label_44.setStyleSheet("background-color: rgb(255, 0, 0);\n")
     # pid-流量
-    MainWindow.lcdNumber_4.display(refresh_return_data['meter_1']['pid_flow'])
+    pid_flow_show = refresh_return_data['meter_1']['pid_flow']
+    pid_flow_show = (pid_flow_show - 5530) / (27648 - 5530) * 14
+    MainWindow.lcdNumber_4.display(pid_flow_show)
     # 标定柱容积
     MainWindow.lcdNumber_8.display(refresh_return_data['meter_1']['calibration_pot_select'])
     # 阀门开度
     pid_valve_position = ma_signal_4 / 20 * 100
-    MainWindow.lcdNumber_3.display(pid_valve_position)
+    mA_show = refresh_return_data['meter_1']['pid_flow']
+    mA_show = (mA_show - 5530) / (27648 - 5530) * 16 + 4
+    MainWindow.lcdNumber_3.display(mA_show)
     # 探头通道
     MainWindow.lcdNumber_5.display(refresh_return_data['meter_1']['pid_control_channel'])
     # 探头K值
     MainWindow.lcdNumber_7.display(refresh_return_data['meter_1']['sensor_k_factor'])
     # 流量设置值
-    MainWindow.lcdNumber_15.display(refresh_return_data['meter_1']['pid_set_point'])
+    mA_show = refresh_return_data['meter_1']['pid_flow']
+    mA_show = (mA_show - 5530) / (27648 - 5530) * 16 + 4
+    MainWindow.lcdNumber_15.display(mA_show)
 
     pump_1_status = refresh_return_data['meter_1']['pump_1_status']
     if pump_1_status == 1:
@@ -512,9 +519,9 @@ def refresh_parameter_all():
     flow_meter_1.display_data_ch4['y'][28799] = pulse_4
     flow_meter_1.display_data_ch5['y'][28799] = pulse_5
     flow_meter_1.display_data_ch6['y'][28799] = pulse_6
-    flow_meter_1.display_pid_flow['y'][28799] = refresh_return_data['meter_1']['pid_flow']
-    flow_meter_1.display_valve_position['y'][28799] = pid_valve_position
-    flow_meter_1.display_pid_set_point['y'][28799] = refresh_return_data['meter_1']['pid_set_point']
+    flow_meter_1.display_pid_flow['y'][28799] = pid_flow_show
+    flow_meter_1.display_valve_position['y'][28799] = mA_show
+    flow_meter_1.display_pid_set_point['y'][28799] = mA_show
 
 
 #  定时连接RS-485函数
@@ -668,10 +675,10 @@ class PlotCanvas(FigureCanvas):
 Plot_pid_flow = PlotCanvas(MainWindow, 3.5, 3, 100,
                            flow_meter_1.display_pid_flow['x'],
                            flow_meter_1.display_pid_flow['y'],
-                           1,
+                           0,
                            flow_meter_1.display_pid_set_point['x'],
                            flow_meter_1.display_pid_set_point['y'],
-                           'PID流量')
+                           'pH值')
 Plot_pid_flow.move(480, 30)
 Plot_valve_position = PlotCanvas(MainWindow, 3.5, 3, 100,
                                  flow_meter_1.display_valve_position['x'],
@@ -679,7 +686,7 @@ Plot_valve_position = PlotCanvas(MainWindow, 3.5, 3, 100,
                                  0,
                                  flow_meter_1.display_pid_set_point['x'],
                                  flow_meter_1.display_pid_set_point['y'],
-                                 '阀门开度')
+                                 'mA值')
 Plot_valve_position.move(800, 30)
 Plot_meter_data = PlotCanvas(MainWindow, 3.5, 3, 100,
                              flow_meter_1.display_data_ch1['x'],
@@ -687,7 +694,7 @@ Plot_meter_data = PlotCanvas(MainWindow, 3.5, 3, 100,
                              0,
                              flow_meter_1.display_pid_set_point['x'],
                              flow_meter_1.display_pid_set_point['y'],
-                             '通道1')
+                             '1分钟脉冲数')
 Plot_meter_data.move(480, 310)
 Plot_meter_data_2 = PlotCanvas(MainWindow, 3.5, 3, 100,
                                flow_meter_1.display_data_ch2['x'],
