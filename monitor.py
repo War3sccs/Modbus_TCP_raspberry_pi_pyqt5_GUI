@@ -135,7 +135,10 @@ def translate_meter_data_to_save_parlance(meter_data, meter_data_column):
 def save_data(log_data):
     dir_now = os.getcwd()  # 获取当前工作目录
     logger_paddle.debug('保存目录' + dir_now)
-    export_file_name = dir_now + '\\' + 'meter_run_data.csv'
+    # windows
+    # export_file_name = dir_now + '\\' + 'meter_run_data.csv'
+    # windows
+    export_file_name = dir_now + '/' + 'meter_run_data.csv'
     logger_paddle.info('保存文件' + export_file_name)
     log_data.to_csv(export_file_name, index=False, header=False, mode='a')
 
@@ -322,9 +325,9 @@ def refresh_parameter_for_1_meter(flowmeter, modbus_tcp_connection):
 
 
         # 保存运行记录
-        # save_run_data = translate_meter_data_to_save_parlance(flowmeter.Meter_data_2_plus,
-        #                                                       flowmeter.Meter_data_column_2_plus)
-        # save_data(save_run_data)
+        save_run_data = translate_meter_data_to_save_parlance(flowmeter.Meter_data_2_plus,
+                                                              flowmeter.Meter_data_column_2_plus)
+        save_data(save_run_data)
 
     # 刷新脉冲数
     if flowmeter.Connect_status_meter == 0:
