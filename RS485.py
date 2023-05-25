@@ -179,7 +179,8 @@ def modbus_read_boolean_data(COM, baudrate, bytesize, parity, stopbits, address,
 if __name__ == '__main__':
     # Serial_ports=Search_Serial()
     # print(Serial_ports)
-    get_data = modbus_read('COM5', 9600, 8, 'N', 1, 1, 0, 109)
+    connect = define_rs_485_connection('/dev/ttyUSB0', 9600, 8,'N', 1, 1 )
+    get_data = modbus_read(connect, 1,  1, 1)
     print('get_data=' + str(get_data))
     # write_data = modbus_write('COM15', 9600, 8, 'N', 1, 1, 1, 1)  # 1002为modbus地址，寄存器地址41003
     # print(write_data)

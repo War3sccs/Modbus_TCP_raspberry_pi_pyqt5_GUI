@@ -151,6 +151,7 @@ plt.rcParams['figure.facecolor'] = '#F0F0F0'  # 修改曲线背景颜色
 tcp_conncetion = Modbus_TCP.define_modbus_tcp_connection("192.168.1.150")
 logger_paddle.info(tcp_conncetion)
 
+# TODO:1.3.3 建立Modbus_RTU连接
 
 # TODO:2.仪表类
 class FlowMeter:
